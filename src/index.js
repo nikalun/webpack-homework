@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
+import Loadable from 'react-loadable';
 
-import Albums from './pages/albums'
+/*import Albums from './pages/albums'
 import Tags from './pages/tags'
-import Add from './pages/add'
+import Add from './pages/add'*/
 
 import Header from './components/Header'
 import Content from './components/Content'
@@ -13,6 +14,24 @@ import './components/common.css';
 
 class App extends React.PureComponent {
   render() {
+
+    const Loading = () => <div>Loading...</div>;
+
+    const Albums = Loadable({
+        loader: () => import(/* webpackChunkName: "albums" */ './pages/albums'),
+        loading: Loading,
+    });
+
+    const Tags = Loadable({
+        loader: () => import(/* webpackChunkName: "tags" */ './pages/tags'),
+        loading: Loading,
+    });
+
+    const Add = Loadable({
+        loader: () => import(/* webpackChunkName: "add" */ './pages/add'),
+        loading: Loading,
+    });
+
     return (
       <Router>
         <div className='App'>

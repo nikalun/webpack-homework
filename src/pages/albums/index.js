@@ -1,9 +1,7 @@
-import React from 'react';
-
 import Title from '../../components/Title';
 import Album from '../../components/Album';
 
-import data from './data';
+import data from './data.json';
 
 import './styles.css';
 
